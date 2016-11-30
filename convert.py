@@ -8,6 +8,12 @@ def to_caesar(text, key=('s', 12)):
     return text
 
 def to_morse(text):
+    """
+    >>> to_morse('abc')
+    '.-  -...  -.-.'
+    >>> to_morse('abc abc')
+    '.-  -...  -.-.  /  .-  -...  -.-.'
+    """
     CODE = {
         'A': '.-',     'B': '-...',   'C': '-.-.', 
         'D': '-..',    'E': '.',      'F': '..-.',
@@ -25,8 +31,8 @@ def to_morse(text):
         '9': '----.' 
         }
 		    
-    convert = lambda w: str([CODE[c] for c in w])
-    return "  ".join(convert(word.upper()) for word in text.split())
+    convert = lambda w: "  ".join([CODE[c] for c in w])
+    return "  /  ".join(convert(word.upper()) for word in text.split())
 
 def convert(path):
     text = "\n".join(open(path).readlines())

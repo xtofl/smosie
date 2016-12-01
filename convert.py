@@ -3,20 +3,18 @@ import string
 
 def to_caesar(text, key=('s', 12)):
     """
-    >>> to_caesar("abc", key=('a', 2))
-    'bcd'
-    >>> to_caesar("abc", key=('b', 3))
-    'bcd'
-    >>> to_caesar("safe: tegen", key=('s', 23))
+    >>> to_caesar("abc", key=('a', 1))
+    'lmn'
+    >>> to_caesar("abc", key=('b', 2))
+    'lmn'
+    >>> to_caesar("safe: tegen", key=('s', 12))
     'weji: xikir'
     """
-    alphabet = string.ascii_lowercase
-    # shifted('s') == ascii(12)
-    # s + shift = 12
-    # shift = 12 - ord(s)
-    shift = (key[1]-1) - (ord(key[0]) - ord('a'))
-    shifted_alphabet = alphabet[shift:] + alphabet[:shift]
-    table = str.maketrans(alphabet, shifted_alphabet)
+    outer_alphabet = "abcdefghijklmnopqrstuvwxyz"
+    inner_alphabet = "lmnopqrstuvwxyzabcdefghijk"
+    shift = key[1] - (ord(key[0])-ord('a')+1)
+    shifted_inner_alphabet = inner_alphabet[shift:] + inner_alphabet[:shift]
+    table = str.maketrans(outer_alphabet, shifted_inner_alphabet)
     return text.translate(table)
 
 def to_morse(text):

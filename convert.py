@@ -59,3 +59,10 @@ def convert(path):
 
 if __name__ == "__main__":
     convert(sys.argv[1])
+    print("\n\n")
+    print("("+ to_caesar("in de kamer van isaak", ('b', 7))+")")
+    print(to_morse("dit is code b zeven: " + to_caesar("in de kamer van isaak", ('b', 7))))
+    print("\n\n")
+    print(to_morse("in de bedla van jona"))
+    print("\n\n")
+    print(to_morse("in de mand van de oudste"))
